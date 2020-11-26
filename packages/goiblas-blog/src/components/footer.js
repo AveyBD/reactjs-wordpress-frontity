@@ -7,13 +7,13 @@ const Footer = () => {
     <FooterContainer className="main-footer">
         <Container>
             <PowerBy>
-                Desarrollado con <a rel="noopener noreferrer" href="https://frontity.org/" target="_blank">Frontity</a>
+                Built with ❤️ By <a rel="noopener noreferrer" href="https://frontity.org/" target="_blank">Frontity</a>
             </PowerBy>
             <Social>
-                Me puedes encontrar en:
-                <a className="link" rel="noopener noreferrer" href="https://twitter.com/goiblas" target="_blank">Twitter</a> 
-                <a className="link" rel="noopener noreferrer" href="https://github.com/goiblas" target="_blank">Github</a> 
-                <a className="link" rel="noopener noreferrer" href="https://codepen.io/goiblas/" target="_blank">Codepen</a>              
+                Find me on:
+                <a className="link" rel="noopener noreferrer" href="https://twitter.com/av3y" target="_blank">Twitter</a>
+                <a className="link" rel="noopener noreferrer" href="https://github.com/AveyBD" target="_blank">Github</a>
+                <a className="link" rel="noopener noreferrer" href="https://t.me/AveyOnion/" target="_blank">Telegram</a>
             </Social>
         </Container>
     </FooterContainer>

@@ -2,22 +2,22 @@ const settings = {
   name: "theme-goiblas",
   state: {
     frontity: {
-      url: "goiblas.com",
-      title: "Blog de Desarrollo WordPress con Javascript ⚛️",
+      url: "https://ddeb.me",
+      title: "যখন যেমন ইচ্ছে️ আমার খাতা",
       description:
         "👋! Soy Jesús Olazagoitia, En este blog encontrarás 🔮 artículos sobre desarrollo WordPress con JavaScript, 🏗️ creación de bloques para Gutenberg, ⚛️ React y mis expericias 🤪 como desarrollador Frontend",
-      lang: "es",
+      lang: "en",
       hero: {
         content:
-          "👋 Soy Jesús Olazagoitia, escribo sobre desarrollo WordPress con JavaScript",
+          "👋 যদি কখনো হারাই, খুঁজে নিও আমায় পাহাড়ে আর লোকগানে। ",
         cta: {
-          content: "¿Quíeres saber más de mi?",
-          link: "/sobre-mi/"
+          content: "আরো জানবেন?",
+          link: "/about/"
         }
       },
       author: {
-        name: "Jesús Olazagoitia",
-        link: "/sobre-mi/"
+        name: "Debashish Das",
+        link: "/about/"
       }
     }
   },
@@ -27,9 +27,9 @@ const settings = {
       state: {
         theme: {
           menu: [
-            ["Blog", "/"],
-            ["Proyectos", "/proyectos/"],
-            ["Sobre mí", "/sobre-mi/"]
+            ["ব্লগ", "/"],
+            ["Portfolio", "/proyectos/"],
+            ["কে?", "/sobre-mi/"]
           ]
         }
       }
@@ -38,7 +38,7 @@ const settings = {
       name: "@frontity/wp-source",
       state: {
         source: {
-          api: "https://horus.online/wp-json/"
+          api: "https://public-api.wordpress.com/wp/v2/sites/debashishdab.wordpress.com"
         }
       }
     },

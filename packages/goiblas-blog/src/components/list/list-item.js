@@ -27,7 +27,7 @@ const Item = ({ state, item }) => {
       </Postdetails>
       <p>
         <span dangerouslySetInnerHTML={{__html: excerptPlain} } />
-        <Link link={item.link} id={readmoreId} ariaLabelledby={readmoreId + ' ' + titleId }>Leer&nbsp;más</Link>
+        <Link link={item.link} id={readmoreId} ariaLabelledby={readmoreId + ' ' + titleId }>আরো&nbsp;পড়ুন</Link>
       </p>
     </Article>
   );

@@ -21,7 +21,7 @@ const Theme = ({ state }) => {
   useEffect(()=> {
     if(state.frontity.platform === "client" ) {
       FathomClient.load("XMXXKTTQ", {
-        includedDomains: ["goiblas.com"],
+        includedDomains: ["ddeb.com"],
       });
     }
   }, []);
@@ -39,7 +39,7 @@ const Theme = ({ state }) => {
         {data.isPostType && (
           <script
             id="dsq-count-scr"
-            src="https://goiblas.disqus.com/count.js"
+            src="https://deb-4.disqus.com/embed.js"
             async
           />
         )}

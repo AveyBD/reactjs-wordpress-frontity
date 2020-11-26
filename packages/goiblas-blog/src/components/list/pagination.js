@@ -30,13 +30,13 @@ const Pagination = ({ state, actions, libraries }) => {
     <div>
       {isThereNextPage && (
         <Link link={nextPageLink}>
-          <Text>← Older posts</Text>
+          <Text>← পুরাতন লেখা</Text>
         </Link>
       )}
-      {isTherePreviousPage && isThereNextPage && " - "}
+      {isTherePreviousPage && isThereNextPage && " || "}
       {isTherePreviousPage && (
         <Link link={prevPageLink}>
-          <Text>Newer posts →</Text>
+          <Text> নতুন লেখা →</Text>
         </Link>
       )}
     </div>
