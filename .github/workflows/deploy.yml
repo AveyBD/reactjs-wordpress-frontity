@@ -16,6 +16,8 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: '10.x'
+    - name: Install Wrangler
+      run: wrangler init
     - name: Install deps
       run: npm install
     - name: Publish
