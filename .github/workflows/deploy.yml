@@ -1,28 +1,91 @@
-name: Deploy
-
-on:
-  push:
-    branches:
-      - master
-  repository_dispatch:
+on: push
 
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
+    name: Lint
     steps:
-    - uses: actions/checkout@v1
-    - name: Navigate to repo
-      run: cd $GITHUB_WORKSPACE
-    - uses: actions/setup-node@v1
+    - uses: actions/checkout@v2
+    - name: Lint shell script
+      uses: azohra/shell-linter@v0.3.0
       with:
-        node-version: '10.x'
-    - name: Install Wrangler
-      run: wrangler init
-    - name: Install deps
-      run: npm install
-    - name: Publish
-      uses: cloudflare/wrangler-action@1.2.0
+        path: "entrypoint.sh"
+  build-only:
+    runs-on: ubuntu-latest
+    name: Only build the app
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build app
+        uses: ./
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          workingDirectory: "test"
+          publish: false
+          secrets: |
+            SECRET1
+            SECRET2
+          preCommands: echo "*** pre commands ***"
+          postCommands: |
+            echo "*** post commands ***"
+            wrangler build
+            echo "******"
+        env:
+          SECRET1: ${{ secrets.SECRET1 }}
+          SECRET2: ${{ secrets.SECRET2 }}
+  publish:
+    runs-on: ubuntu-latest
+    name: Publish app
+    steps:
+    - uses: actions/checkout@v2
+    - name: Publish app
+      uses: ./
       with:
-        apiToken: ${{ secrets.CF_API_TOKEN }}
-      env:
-        CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+        apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        environment: "production"
+        workingDirectory: 'test'
+  publish_legacy_credentials:
+    runs-on: ubuntu-latest
+    name: Publish app with legacy credentials
+    steps:
+    - uses: actions/checkout@v2
+    - name: Publish app
+      uses: ./
+      with:
+        apiKey: ${{ secrets.CLOUDFLARE_API_KEY }}
+        email: ${{ secrets.CLOUDFLARE_EMAIL }}
+        environment: "production"
+        workingDirectory: 'test'
+  publish_hardcoded_wrangler_version:
+    runs-on: ubuntu-latest
+    name: Publish app with hardcoded Wrangler version
+    steps:
+    - uses: actions/checkout@v2
+    - name: Publish app
+      uses: ./
+      with:
+        apiKey: ${{ secrets.CLOUDFLARE_API_KEY }}
+        email: ${{ secrets.CLOUDFLARE_EMAIL }}
+        environment: "production"
+        wranglerVersion: '1.5.0'
+        workingDirectory: 'test'
+  publish_secrets:
+    runs-on: ubuntu-latest
+    name: Publish app with secrets
+    steps:
+      - uses: actions/checkout@v2
+      - name: Publish app
+        uses: ./
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          environment: "production"
+          workingDirectory: "test"
+          secrets: |
+            SECRET1
+            SECRET2
+          preCommands: echo "*** pre command ***"
+          postCommands: |
+            echo "*** post commands ***"
+            echo "******"
+        env:
+          SECRET1: ${{ secrets.SECRET1 }}
+          SECRET2: ${{ secrets.SECRET2 }}
